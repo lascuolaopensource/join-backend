@@ -1,0 +1,68 @@
+@import models.forms.SignInForm
+@import org.webjars.play.WebJarsUtil
+
+@(form: Form[SignInForm.Data])(implicit request: RequestHeader, messages: Messages, webJarsUtil: WebJarsUtil)
+
+@main(Messages("signIn.title")) {
+
+	<div id="signin-page">
+
+		<div id="signin-top">
+			<h1>@Html(Messages("signIn.top.title"))</h1>
+			<p>@Html(Messages("signIn.top.content", routes.HomeController.rules.url))</p>
+		</div>
+
+		<div id="signin-main" class="mt-5">
+			<h2>@Messages("signIn.main.title")</h2>
+
+			@if(form.errors.nonEmpty) {
+				<div class="row">
+					<div class="col-12 alert alert-danger">
+						<a href="#" class="close" data-dismiss="alert">&times;</a>
+						@form.errors.map { error =>
+							@if(!error.key.isEmpty) {
+								<strong>@Messages(error.key)</strong><br />
+							}
+							@error.messages.map(m => Messages(m, error.args)).mkString("<br />")
+							<br />
+						}
+					</div>
+				</div>
+			}
+
+			<div class="row">
+				<div class="col">
+					@helper.form(action = routes.SignInController.create(),
+						'novalidate -> "true", 'class -> "needs-validation") {
+						<div class="form-group">
+							<label>@Messages("signIn.form.email")</label>
+							@helpers.input(form("email"), "email", 'class -> "form-control", 'required -> "true")
+						</div>
+						<div class="form-group">
+							<label>@Messages("signIn.form.password")</label>
+							@helpers.input(form("password"), "password", 'class -> "form-control", 'required -> "true")
+						</div>
+						<div class="form-group">
+							<button type="submit" class="btn btn-black">@Messages("signIn.form.submit")</button>
+						</div>
+					}
+
+					<ul class="list-unstyled list-arrows">
+						<li>
+							<a href="@routes.SignUpController.index()">
+								@Messages("signIn.signUp")
+							</a>
+						</li>
+						<li>
+							<a href="@routes.ChangePasswordController.forgotPassword()">
+								@Messages("signIn.lostData")
+							</a>
+						</li>
+					</ul>
+				</div>
+			</div>
+		</div>
+
+	</div>
+
+}

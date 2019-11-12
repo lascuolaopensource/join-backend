@@ -1,0 +1,220 @@
+# Routes
+# This file defines all application routes (Higher priority routes first)
+# ~~~~
+
+GET           /                                                   controllers.HomeController.index
+
+POST          /lang/:lang                                         controllers.HomeController.changeLang(lang: String)
+
+# Sign-up
+GET           /signup                                             controllers.SignUpController.index
+POST          /signup                                             controllers.SignUpController.startCreate
+GET           /signup/:token                                      controllers.SignUpController.create(token: String)
+# Sign-in
+GET           /signin                                             controllers.SignInController.index
+POST          /signin                                             controllers.SignInController.create
+POST          /signout                                            controllers.SignInController.signOut
+
+GET           /confirm-email/:token                               controllers.MailConfirmController.confirmChangeEmail(token: String)
+
+GET           /reset-password                                     controllers.ChangePasswordController.forgotPassword
+POST          /reset-password                                     controllers.ChangePasswordController.handleForgotPassword
+GET           /reset-password/:token                              controllers.ChangePasswordController.resetPassword(token: String)
+POST          /reset-password/:token                              controllers.ChangePasswordController.handleResetPassword(token: String)
+
+GET           /change-password                                    controllers.ChangePasswordController.changePassword
+POST          /change-password                                    controllers.ChangePasswordController.handleChangePassword
+
+GET           /rules                                              controllers.HomeController.rules
+
+GET           /oauth2/access_token                                controllers.OAuth2Controller.accessToken
+
+
+GET           /api/me                                             controllers.api.UserController.me
+PUT           /api/me                                             controllers.api.UserController.update
+GET           /api/users/:id                                      controllers.api.UserController.find(id: Long)
+PUT           /api/users/:id/favorite                             controllers.api.UserController.favorite(id: Long)
+GET           /api/users                                          controllers.api.UserController.index
+DELETE        /api/users/:id                                      controllers.api.admin.UserController.delete(id: Long)
+PUT           /api/users/:id/role                                 controllers.api.admin.UserController.updateRole(id: Long)
+
+GET           /api/me/favorite/users                              controllers.api.UserController.myFavorites
+GET           /api/users/:id/favorite/users                       controllers.api.UserController.favorites(id: Long)
+GET           /api/me/favorite/activities                         controllers.api.ActivitiesController.myFavorites
+GET           /api/users/:id/favorite/activities                  controllers.api.ActivitiesController.favorites(id: Long)
+GET           /api/me/favorite/ideas                              controllers.api.BazaarIdeasController.myFavorites
+GET           /api/users/:id/favorite/ideas                       controllers.api.BazaarIdeasController.favorites(id: Long)
+
+GET           /api/cities/:term                                   controllers.api.CitiesController.index(term: String)
+
+GET           /api/rules                                          controllers.api.RulesController.get
+PUT           /api/rules                                          controllers.api.RulesController.set
+
+GET           /api/users/stats/teaching                           controllers.api.admin.UserController.topTeaching
+GET           /api/users/stats/research                           controllers.api.admin.UserController.topResearch
+GET           /api/users/stats/ideas                              controllers.api.admin.UserController.topIdeas
+GET           /api/users/stats/skills                             controllers.api.admin.UserController.topSkills
+GET           /api/users/stats/maker                              controllers.api.admin.UserController.topMaker
+GET           /api/users/stats/favored                            controllers.api.admin.UserController.topFavored
+GET           /api/users/stats/favorites                          controllers.api.admin.UserController.topFavorites
+
+GET           /api/membership/requests                            controllers.api.MembershipsController.allRequests
+POST          /api/membership/new                                 controllers.api.MembershipsController.requestNew
+POST          /api/membership/renew                               controllers.api.MembershipsController.requestRenewal
+PUT           /api/membership/:userId                             controllers.api.MembershipsController.acceptRequest(userId: Long)
+DELETE        /api/membership/request                             controllers.api.MembershipsController.deleteRequest
+DELETE        /api/membership/active                              controllers.api.MembershipsController.deleteActive
+DELETE        /api/membership/renewal                             controllers.api.MembershipsController.deleteRenewal
+
+GET           /api/membership/stats/count                         controllers.api.MembershipsController.countActive
+
+GET           /api/membership_types                               controllers.api.MembershipsController.allTypes
+POST          /api/membership_types                               controllers.api.MembershipsController.createType
+PUT           /api/membership_types/:id                           controllers.api.MembershipsController.updateType(id: Long)
+DELETE        /api/membership_types/:id                           controllers.api.MembershipsController.deleteType(id: Long)
+
+GET           /api/skills/requests                                controllers.api.admin.SkillsController.requests
+PUT           /api/skills/:id/confirm                             controllers.api.admin.SkillsController.confirmRequest(id: Long)
+GET           /api/skills/admin                                   controllers.api.admin.SkillsController.search
+POST          /api/skills/admin                                   controllers.api.admin.SkillsController.create
+PUT           /api/skills/admin/:id                               controllers.api.admin.SkillsController.update(id: Long)
+GET           /api/skills/admin/:id                               controllers.api.admin.SkillsController.find(id: Long)
+PUT           /api/skills/admin/:idF/to/:idT                      controllers.api.admin.SkillsController.moveSkills(idF: Long, idT: Long)
+DELETE        /api/skills/admin/:id                               controllers.api.admin.SkillsController.delete(id: Long)
+DELETE        /api/skills/admin/:id/:uid                          controllers.api.admin.SkillsController.deleteForUser(id: Long, uid: Long)
+
+GET           /api/skills/stats/latest                            controllers.api.admin.SkillsController.latest
+GET           /api/skills/stats/by_user_count                     controllers.api.admin.SkillsController.byUserCount
+
+GET           /api/skills                                         controllers.api.SkillsController.index
+POST          /api/skills                                         controllers.api.SkillsController.create
+DELETE        /api/skills/:id                                     controllers.api.SkillsController.delete(id: Long)
+
+GET           /api/bazaar_ideas                                   controllers.api.BazaarIdeasController.index
+GET           /api/bazaar_ideas_slim                              controllers.api.BazaarIdeasController.allSlim
+GET           /api/bazaar_ideas/user/:id                          controllers.api.admin.BazaarIdeasController.byUser(id: Long)
+GET           /api/bazaar_ideas/teach                             controllers.api.BazaarIdeasController.indexTeach
+GET           /api/bazaar_ideas/learn                             controllers.api.BazaarIdeasController.indexLearn
+GET           /api/bazaar_ideas/event                             controllers.api.BazaarIdeasController.indexEvent
+GET           /api/bazaar_ideas/research                          controllers.api.BazaarIdeasController.indexResearch
+GET           /api/bazaar_ideas/teach/:id                         controllers.api.BazaarIdeasController.showTeach(id: Long)
+GET           /api/bazaar_ideas/learn/:id                         controllers.api.BazaarIdeasController.showLearn(id: Long)
+GET           /api/bazaar_ideas/event/:id                         controllers.api.BazaarIdeasController.showEvent(id: Long)
+GET           /api/bazaar_ideas/research/:id                      controllers.api.BazaarIdeasController.showResearch(id: Long)
+POST          /api/bazaar_ideas/learn                             controllers.api.BazaarIdeasController.createLearn
+POST          /api/bazaar_ideas/teach                             controllers.api.BazaarIdeasController.createTeach
+POST          /api/bazaar_ideas/event                             controllers.api.BazaarIdeasController.createEvent
+POST          /api/bazaar_ideas/research                          controllers.api.BazaarIdeasController.createResearch
+PUT           /api/bazaar_ideas/learn/:id                         controllers.api.BazaarIdeasController.updateLearn(id: Long)
+PUT           /api/bazaar_ideas/teach/:id                         controllers.api.BazaarIdeasController.updateTeach(id: Long)
+PUT           /api/bazaar_ideas/event/:id                         controllers.api.BazaarIdeasController.updateEvent(id: Long)
+PUT           /api/bazaar_ideas/research/:id                      controllers.api.BazaarIdeasController.updateResearch(id: Long)
+DELETE        /api/bazaar_ideas/learn/:id                         controllers.api.admin.BazaarIdeasController.deleteLearn(id: Long)
+DELETE        /api/bazaar_ideas/teach/:id                         controllers.api.admin.BazaarIdeasController.deleteTeach(id: Long)
+DELETE        /api/bazaar_ideas/event/:id                         controllers.api.admin.BazaarIdeasController.deleteEvent(id: Long)
+DELETE        /api/bazaar_ideas/research/:id                      controllers.api.admin.BazaarIdeasController.deleteResearch(id: Long)
+
+GET           /api/bazaar_ideas/learn/:id/preference              controllers.api.BazaarPreferencesController.findLearn(id: Long)
+GET           /api/bazaar_ideas/teach/:id/preference              controllers.api.BazaarPreferencesController.findTeach(id: Long)
+GET           /api/bazaar_ideas/event/:id/preference              controllers.api.BazaarPreferencesController.findEvent(id: Long)
+GET           /api/bazaar_ideas/research/:id/preference           controllers.api.BazaarPreferencesController.findResearch(id: Long)
+PUT           /api/bazaar_ideas/learn/:id/preference              controllers.api.BazaarPreferencesController.upsertFlagsLearn(id: Long)
+PUT           /api/bazaar_ideas/teach/:id/preference              controllers.api.BazaarPreferencesController.upsertFlagsTeach(id: Long)
+PUT           /api/bazaar_ideas/event/:id/preference              controllers.api.BazaarPreferencesController.upsertFlagsEvent(id: Long)
+PUT           /api/bazaar_ideas/research/:id/preference           controllers.api.BazaarPreferencesController.upsertFlagsResearch(id: Long)
+PUT           /api/bazaar_ideas/learn/:id/wish                    controllers.api.BazaarPreferencesController.upsertWishLearn(id: Long)
+PUT           /api/bazaar_ideas/teach/:id/wish                    controllers.api.BazaarPreferencesController.upsertWishTeach(id: Long)
+PUT           /api/bazaar_ideas/event/:id/wish                    controllers.api.BazaarPreferencesController.upsertWishEvent(id: Long)
+PUT           /api/bazaar_ideas/research/:id/wish                 controllers.api.BazaarPreferencesController.upsertWishResearch(id: Long)
+DELETE        /api/bazaar_ideas/wish/:id                          controllers.api.BazaarPreferencesController.deleteWish(id: Long)
+
+GET           /api/bazaar_ideas/learn/:id/comments                controllers.api.BazaarCommentsController.findLearn(id: Long)
+GET           /api/bazaar_ideas/teach/:id/comments                controllers.api.BazaarCommentsController.findTeach(id: Long)
+GET           /api/bazaar_ideas/event/:id/comments                controllers.api.BazaarCommentsController.findEvent(id: Long)
+GET           /api/bazaar_ideas/research/:id/comments             controllers.api.BazaarCommentsController.findResearch(id: Long)
+POST          /api/bazaar_ideas/learn/:id/comments                controllers.api.BazaarCommentsController.createLearn(id: Long)
+POST          /api/bazaar_ideas/teach/:id/comments                controllers.api.BazaarCommentsController.createTeach(id: Long)
+POST          /api/bazaar_ideas/event/:id/comments                controllers.api.BazaarCommentsController.createEvent(id: Long)
+POST          /api/bazaar_ideas/research/:id/comments             controllers.api.BazaarCommentsController.createResearch(id: Long)
+DELETE        /api/bazaar_ideas/comments/:id                      controllers.api.BazaarCommentsController.delete(id: Long)
+
+GET           /api/bazaar_ideas/stats/latest                      controllers.api.admin.BazaarIdeasController.latestIdeas
+GET           /api/bazaar_ideas/stats/count                       controllers.api.admin.BazaarIdeasController.count
+GET           /api/bazaar_ideas/stats/top/event                   controllers.api.admin.BazaarIdeasController.topScoredEvent
+GET           /api/bazaar_ideas/stats/top/teach                   controllers.api.admin.BazaarIdeasController.topScoredTeach
+GET           /api/bazaar_ideas/stats/top/research                controllers.api.admin.BazaarIdeasController.topScoredResearch
+GET           /api/bazaar_ideas/stats/creators                    controllers.api.admin.BazaarIdeasController.topCreators
+GET           /api/bazaar_ideas/stats/ever                        controllers.api.admin.BazaarIdeasController.topEver
+
+GET           /api/topics                                         controllers.api.TopicsController.index
+
+GET           /api/activities                                     controllers.api.ActivitiesController.index
+GET           /api/activities/event                               controllers.api.ActivitiesController.allEvent
+GET           /api/activities/teach                               controllers.api.ActivitiesController.allTeach
+GET           /api/activities/research                            controllers.api.ActivitiesController.allResearch
+GET           /api/activities/event/:id                           controllers.api.ActivitiesController.findEvent(id: Long)
+GET           /api/activities/teach/:id                           controllers.api.ActivitiesController.findTeach(id: Long)
+GET           /api/activities/research/:id                        controllers.api.ActivitiesController.findResearch(id: Long)
+GET           /api/activities/research/user/:id                   controllers.api.admin.ActivitiesController.researchByUser(id: Long)
+POST          /api/activities/event                               controllers.api.admin.ActivitiesController.createEvent
+POST          /api/activities/teach                               controllers.api.admin.ActivitiesController.createTeach
+POST          /api/activities/research                            controllers.api.admin.ActivitiesController.createResearch
+PUT           /api/activities/event/:id                           controllers.api.admin.ActivitiesController.updateEvent(id: Long)
+PUT           /api/activities/teach/:id                           controllers.api.admin.ActivitiesController.updateTeach(id: Long)
+PUT           /api/activities/research/:id                        controllers.api.admin.ActivitiesController.updateResearch(id: Long)
+DELETE        /api/activities/event/:id                           controllers.api.admin.ActivitiesController.deleteEvent(id: Long)
+DELETE        /api/activities/teach/:id                           controllers.api.admin.ActivitiesController.deleteTeach(id: Long)
+DELETE        /api/activities/research/:id                        controllers.api.admin.ActivitiesController.deleteResearch(id: Long)
+PUT           /api/activities/event/:id/favorite                  controllers.api.ActivitiesController.favoriteEvent(id: Long)
+PUT           /api/activities/teach/:id/favorite                  controllers.api.ActivitiesController.favoriteTeach(id: Long)
+PUT           /api/activities/research/:id/favorite               controllers.api.ActivitiesController.favoriteResearch(id: Long)
+PUT           /api/activities/event/:id/subscription              controllers.api.ActivitiesController.subscribe(id: Long)
+PUT           /api/activities/teach/:id/subscription              controllers.api.ActivitiesController.subscribe(id: Long)
+GET           /api/activities/event/:id/subscriptions             controllers.api.admin.ActivitiesController.subscriptions(id: Long)
+GET           /api/activities/teach/:id/subscriptions             controllers.api.admin.ActivitiesController.subscriptions(id: Long)
+PUT           /api/activities/event/:id/subscriptions/:uid        controllers.api.admin.ActivitiesController.verifySubscription(id: Long, uid: Long)
+PUT           /api/activities/teach/:id/subscriptions/:uid        controllers.api.admin.ActivitiesController.verifySubscription(id: Long, uid: Long)
+DELETE        /api/activities/event/:id/subscriptions/:uid        controllers.api.admin.ActivitiesController.deleteSubscription(id: Long, uid: Long)
+DELETE        /api/activities/teach/:id/subscriptions/:uid        controllers.api.admin.ActivitiesController.deleteSubscription(id: Long, uid: Long)
+GET           /api/activities/research/:id/applications           controllers.api.ActivitiesController.applications(id: Long)
+PUT           /api/activities/research/:rid/application           controllers.api.ActivitiesController.changeApplication(rid: Long)
+
+GET           /api/activities/stats/next                          controllers.api.admin.ActivitiesController.next
+GET           /api/activities/stats/top                           controllers.api.admin.ActivitiesController.top
+GET           /api/activities/stats/count                         controllers.api.admin.ActivitiesController.count
+
+GET           /api/activities/stats/projects/top                  controllers.api.admin.ActivitiesController.topProjects
+GET           /api/activities/stats/projects/count                controllers.api.admin.ActivitiesController.countProjects
+
+POST          /api/image_galleries/:id/images                     controllers.api.admin.ImageGalleriesController.addImage(id: Long)
+PUT           /api/image_galleries/images/:id                     controllers.api.admin.ImageGalleriesController.updateImage(id: Long)
+DELETE        /api/image_galleries/images/:id                     controllers.api.admin.ImageGalleriesController.deleteImage(id: Long)
+
+GET           /api/payments/token                                 controllers.api.PaymentsController.clientToken
+
+GET           /api/fablab/machines                                controllers.api.FablabController.allMachines
+GET           /api/fablab/machines/:id                            controllers.api.FablabController.findMachine(id: Long)
+POST          /api/fablab/machines                                controllers.api.admin.FablabController.createMachine
+PUT           /api/fablab/machines/:id                            controllers.api.admin.FablabController.updateMachine(id: Long)
+DELETE        /api/fablab/machines/:id                            controllers.api.admin.FablabController.deleteMachine(id: Long)
+
+GET           /api/fablab/reservations                            controllers.api.FablabController.allReservations
+GET           /api/fablab/machines/:id/reservations               controllers.api.FablabController.machineReservations(id: Long)
+GET           /api/fablab/reservations/by_date                    controllers.api.admin.FablabController.reservations
+GET           /api/fablab/my_reservations                         controllers.api.FablabController.userReservations
+GET           /api/fablab/reservations/user/:id                   controllers.api.FablabController.otherUserReservations(id: Long)
+POST          /api/fablab/machines/:id/reservations               controllers.api.FablabController.createReservation(id: Long)
+DELETE        /api/fablab/reservations/:id                        controllers.api.FablabController.deleteReservation(id: Long)
+PUT           /api/fablab/reservations/:id/delete_time            controllers.api.admin.FablabController.deleteReservationTime(id: Long)
+
+GET           /api/fablab/quotations                              controllers.api.admin.FablabController.allQuotations
+POST          /api/fablab/quotations                              controllers.api.FablabController.createQuotation
+PUT           /api/fablab/quotations/:id                          controllers.api.admin.FablabController.updateUndertakenQuotation(id: Long)
+DELETE        /api/fablab/quotations/:id                          controllers.api.admin.FablabController.deleteQuotation(id: Long)
+
+GET           /api/fablab/stats/top_machines                      controllers.api.admin.FablabController.topMachinesByUsage
+GET           /api/fablab/stats/count                             controllers.api.admin.FablabController.counts
+
+
+GET           /assets/*file                                       controllers.Assets.versioned(file)
+->            /webjars                                            webjars.Routes

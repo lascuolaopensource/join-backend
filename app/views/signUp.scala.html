@@ -1,0 +1,91 @@
+@import models.forms.SignUpForm
+@import org.webjars.play.WebJarsUtil
+
+@(form: Form[SignUpForm.Data], sentEmail: Option[String] = None)(implicit request: RequestHeader, messages: Messages, webJarsUtil: WebJarsUtil)
+
+@main(Messages("signUp.title")) {
+	<div id="signup-page">
+
+		<h1 class="mb-3">@Html(Messages("signUp.top.title"))</h1>
+
+		@sentEmail.map { email =>
+			<div class="alert alert-info alert-dismissible mb-5">
+				<a href="#" class="close" data-dismiss="alert">&times;</a>
+				@Html(Messages("signUp.emailSent", email))
+			</div>
+		}
+
+		@if(form.errors.nonEmpty) {
+			<div class="alert alert-danger">
+				<a href="#" class="close" data-dismiss="alert">&times;</a>
+				@form.errors.map { error =>
+					@if(!error.key.isEmpty) {
+						<strong>@Messages(error.key)</strong><br />
+					}
+					@error.messages.map(m => Messages(m, error.args)).mkString("<br />")
+					<br />
+				}
+			</div>
+		}
+
+		@helper.form(action = routes.SignUpController.startCreate(), 'novalidate -> "true", 'class -> "needs-validation") {
+			<div class="form-row">
+				<div class="form-group col-12 col-sm-6">
+					<label>@Messages("signUp.form.firstName")</label>
+					@helpers.input(form("firstName"), "text", 'class -> "form-control", 'required -> "true")
+				</div>
+				<div class="form-group col-12 col-sm-6">
+					<label>@Messages("signUp.form.lastName")</label>
+					@helpers.input(form("lastName"), "text", 'class -> "form-control", 'required -> "true")
+				</div>
+			</div>
+			<div class="form-row">
+				<div class="form-group col-12 col-sm-6">
+					<label>@Messages("signUp.form.email")</label>
+					@helpers.input(form("email"), "email", 'class -> "form-control", 'required -> "true")
+				</div>
+				<div class="form-group col-12 col-sm-6">
+					<label>@Html(Messages("signUp.form.title"))</label>
+					@helpers.input(form("title"), "text", 'class -> "form-control")
+				</div>
+			</div>
+			<div class="form-row">
+				<div class="form-group col-12 col-sm-6">
+					<label>@Messages("signUp.form.password")</label>
+					@helpers.input(form("password"), "password", 'class -> "form-control",
+						'required -> "true", 'pattern -> ".{8,}")
+				</div>
+				<div class="form-group col-12 col-sm-6">
+					<label>@Messages("signUp.form.password2")</label>
+					@helpers.input(form("password2"), "password", 'class -> "form-control",
+						'required -> "true", 'pattern -> ".{8,}")
+				</div>
+			</div>
+			<div class="form-row">
+				<div class="form-group col-12 col-sm-8 col-md-6">
+					<div class="btn-group btn-group-toggle" data-toggle="buttons">
+						<label class="btn btn-white">
+							<input type="radio" name="@form("agreement").name" value="true" autocomplete="off"> @Messages("signUp.form.agree")
+						</label>
+						<label class="btn btn-white active">
+							<input type="radio" name="@form("agreement").name" value="false" autocomplete="off" checked> @Messages("signUp.form.notAgree")
+						</label>
+					</div>
+				</div>
+				<div class="form-group text-right col-12 col-sm-4 col-md-6">
+					<button type="submit" class="btn btn-black">@Messages("signUp.form.submit")</button>
+				</div>
+			</div>
+			<div class="form-group mt-5">
+				<ul class="list-unstyled list-arrows">
+					<li>
+						<a href="@routes.SignInController.index()">
+							@Messages("signUp.signIn")
+						</a>
+					</li>
+				</ul>
+			</div>
+		}
+
+	</div>
+}

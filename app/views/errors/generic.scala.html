@@ -1,0 +1,10 @@
+@import org.webjars.play.WebJarsUtil
+
+@(statusCode: Int)(implicit requestHeader: RequestHeader, messages: Messages, webJarsUtil: WebJarsUtil)
+
+@main(Messages("errors.generic.title"), htmlClass = Some("error-page")) {
+
+	<img src="@routes.Assets.versioned("images/error.gif")" />
+	<h3 class="font-freak mt-5">@Messages("errors.generic.text", statusCode)</h3>
+
+}

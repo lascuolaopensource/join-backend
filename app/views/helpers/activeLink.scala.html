@@ -1,0 +1,5 @@
+@(linkText: String, href: play.api.mvc.Call = null)(implicit request: RequestHeader)
+
+<div class="nav-item @(if(href != null && request.uri.equalsIgnoreCase(href.toString)) "active")">
+	<a href="@if(href != null) { @href } else { # }">@linkText</a>
+</div>

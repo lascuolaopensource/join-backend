@@ -1,0 +1,158 @@
+@font-face {
+  font-family: FreakGrotesk;
+  src: url("/assets/fonts/FREAKGrotesk-next.otf");
+}
+
+@font-face {
+  font-family: HKGrotesk;
+  src: url("/assets/fonts/HKGrotesk-Regular.otf");
+}
+
+@font-face {
+  font-family: HKGrotesk;
+  font-weight: bold;
+  src: url("/assets/fonts/HKGrotesk-Bold.otf");
+}
+
+@font-face {
+  font-family: HKGrotesk;
+  font-weight: 300;
+  src: url("/assets/fonts/HKGrotesk-Light.otf");
+}
+
+@font-face {
+  font-family: HKGrotesk;
+  font-weight: 800;
+  src: url("/assets/fonts/HKGrotesk-Medium.otf");
+}
+
+@font-face {
+  font-family: HKGrotesk;
+  font-style: italic;
+  src: url("/assets/fonts/HKGrotesk-Italic.otf");
+}
+
+@font-face {
+  font-family: MinionPro;
+  src: url("/assets/fonts/MinionPro-Regular.otf");
+}
+
+
+$font-family-base: HKGrotesk;
+$font-size-base: 1.5rem;
+
+$input-btn-focus-width: 0;
+
+$right-arrow: '\2192\2000';
+
+
+$acid-green: rgba(107,247,82,1);
+$blue: rgba(64,64,242,1);
+$yellow: #ffd700;
+$cyan: #12c8bb;
+// $magenta: rgba(255,59,171,1);
+$magenta: #dc64d7;
+$red: #ff501b;
+
+
+$sos-primary: $magenta;
+$sos-secondary: $cyan;
+
+
+$brand-danger: $red;
+$brand-info: $cyan;
+
+$alert-border-radius: 0;
+
+$state-danger-bg: $red;
+$state-danger-text: white;
+$state-danger-border: darken($red, 10%);
+$alert-danger-bg: $red;
+$alert-danger-text: white;
+$alert-danger-border: darken($red, 10%);
+
+$state-info-bg: $cyan;
+$state-info-text: white;
+$state-info-border: darken($cyan, 10%);
+$alert-info-bg: $cyan;
+$alert-info-text: white;
+$alert-info-border: darken($cyan, 10%);
+
+$link-color:            black;
+$link-decoration:       none;
+$link-hover-color:      darken($link-color, 15%);
+$link-hover-decoration: underline;
+
+$headings-font-weight: bold;
+
+$btn-border-radius: 0;
+
+$input-color:                           black;
+$input-border-color:                    black;
+$input-border-width:                    2px;
+$input-border-radius:                   0;
+$input-box-shadow:                      none;
+
+$input-focus-width: 0;
+$input-focus-border-color: $input-border-color;
+
+$form-feedback-valid-color: $input-border-color;
+
+$navbar-toggler-icon: '\2025';
+$sos-skull: '\1e80';
+
+
+@import "lib/bootstrap/scss/functions", "lib/bootstrap/scss/mixins";
+@import "lib/bootstrap/scss/variables";
+
+
+@mixin button-sos-doubled-variant($color, $hover-bg-color, $hover-color) {
+  color: $color;
+  background-color: transparent;
+  border: 2px solid $color;
+  border-radius: 0;
+  font-weight: bold;
+
+  position: relative;
+  &:before {
+    content: " ";
+    position: absolute;
+    z-index: 0;
+    top: 2px;
+    left: -6px;
+    right: 2px;
+    bottom: -6px;
+    border: 2px solid $color;
+  }
+
+
+  @include hover {
+    color: $hover-color;
+    background-color: $hover-bg-color;
+    border-color: $hover-bg-color;
+    &:before {
+      border-color: $hover-bg-color;
+    }
+  }
+}
+
+
+@mixin button-sos-dotted-variant($color, $hover-color) {
+  color: $color;
+  background-color: transparent;
+  border: 2px dotted $color;
+  border-radius: 0;
+
+
+
+  @include hover {
+    color: $hover-color;
+    border: 2px solid $hover-color;
+  }
+  &:active,
+  &.active,
+  .show > &.dropdown-toggle {
+    color: $hover-color;
+    border: 2px solid $hover-color;
+  }
+}

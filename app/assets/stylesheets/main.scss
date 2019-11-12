@@ -1,0 +1,249 @@
+@import "variables";
+@import "lib/bootstrap/scss/bootstrap";
+
+
+body {
+  padding-bottom: 2em;
+}
+
+
+.text-magenta {
+  color: $magenta;
+}
+
+
+.text-right-arrow:before {
+  content: $right-arrow;
+}
+
+
+.btn {
+  &.btn-sos-doubled-blue {
+    @include button-sos-doubled-variant($blue, $magenta, white);
+  }
+
+  &.btn-sos-dotted-magenta {
+    @include button-sos-dotted-variant(black, $magenta);
+  }
+
+  &.btn-black {
+    @include button-variant(black, black, white, black, white, black);
+  }
+  &.btn-white {
+    $bg: white;
+    @include button-variant($bg, $bg, darken($bg, 7.5%), darken($bg, 10%), black, darken($bg, 10%));
+  }
+}
+
+.font-freak {
+  font-family: FreakGrotesk, sans-serif;
+}
+.font-feat-a {
+  font-family: FreakGrotesk, sans-serif;
+  font-variant-ligatures: contextual;
+  -moz-font-feature-settings: "calt";
+  -webkit-font-feature-settings: "calt";
+  font-feature-settings: "calt";
+}
+.font-feat-b{
+  font-family: FreakGrotesk, sans-serif;
+  -moz-font-feature-settings: "ss01";
+  -webkit-font-feature-settings: "ss01";
+  font-feature-settings: "ss01";
+}
+.font-feat-c{
+  font-family: FreakGrotesk, sans-serif;
+  -moz-font-feature-settings: "ss02";
+  -webkit-font-feature-settings: "ss02";
+  font-feature-settings: "ss02";
+}
+.font-feat-d{
+  font-family: FreakGrotesk, sans-serif;
+  -moz-font-feature-settings: "ss03";
+  -webkit-font-feature-settings: "ss03";
+  font-feature-settings: "ss03";
+}
+.font-feat-e{
+  font-family: FreakGrotesk, sans-serif;
+  -moz-font-feature-settings: "ss04";
+  -webkit-font-feature-settings: "ss04";
+  font-feature-settings: "ss04";
+}
+.font-feat-f{
+  font-family: FreakGrotesk, sans-serif;
+  -moz-font-feature-settings: "ss05";
+  -webkit-font-feature-settings: "ss05";
+  font-feature-settings: "ss05";
+}
+.font-feat-g{
+  font-family: FreakGrotesk, sans-serif;
+  -moz-font-feature-settings: "ss06";
+  -webkit-font-feature-settings: "ss06";
+  font-feature-settings: "ss06";
+}
+.font-feat-h{
+  font-family: FreakGrotesk, sans-serif;
+  -moz-font-feature-settings: "ss07";
+  -webkit-font-feature-settings: "ss07";
+  font-feature-settings: "ss07";
+}
+
+
+.list-arrows {
+  li:before {
+    content: $right-arrow;
+  }
+}
+
+
+.navbar {
+  .navbar-brand {
+    font-family: FreakGrotesk, sans-serif;
+    font-size: $h1-font-size;
+  }
+  .navbar-sos-toggler {
+    border: none;
+    padding: 0;
+    font-size: $h1-font-size;
+    color: black;
+    .navbar-toggler-icon {
+      background-image: none;
+      &:before {
+        font-family: FreakGrotesk, sans-serif;
+        content: $navbar-toggler-icon;
+      }
+    }
+    &:hover {
+      color: $yellow;
+    }
+  }
+}
+
+
+#main-navbar {
+  position: absolute;
+  z-index: 999999;
+  top: 0;
+  left: 0;
+  height: 100%;
+  width: 100%;
+  background-color: black;
+  color: white;
+  .navbar {
+    background-color: black;
+  }
+  &.collapsing {
+    transition: none;
+    transition-duration: 0ms;
+  }
+  .container {
+    position: relative;
+    height: 100%;
+    & > .row {
+      position: absolute;
+      width: 100%;
+      top: 30%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      margin-left: 0;
+      margin-right: 0;
+    }
+  }
+  .btn-link, a {
+    color: white;
+    font-weight: bold;
+    &:hover {
+      text-decoration: none;
+      color: $yellow;
+    }
+  }
+  .navbar-sos-toggler {
+    &:not(:hover) {
+      color: white;
+    }
+    .navbar-toggler-icon {
+      &:before {
+        content: $sos-skull;
+      }
+    }
+  }
+  .nav-divider {
+    margin-bottom: 60px;
+  }
+  .nav-item {
+    a, .btn-link {
+      padding: 0;
+      &:before {
+        content: $right-arrow;
+      }
+    }
+    &.active {
+      a, .btn-link {
+        color: $gray-800;
+      }
+    }
+  }
+}
+
+#main-navbar, .navbar {
+  .navbar-brand {
+    &:hover {
+      color: $yellow;
+    }
+  }
+}
+
+
+#signup-page {
+  h1 {
+    font-weight: normal;
+    text-align: center;
+  }
+}
+
+
+#signin-page {
+  #signin-top {
+    text-align: center;
+    p {
+      color: $cyan;
+      font-weight: bold;
+      a {
+        color: $magenta;
+      }
+    }
+  }
+  #signin-main {
+    h2 {
+      text-align: center;
+    }
+  }
+}
+
+
+form {
+  label, button {
+    font-weight: bold;
+  }
+}
+
+
+.error-page {
+  &, body {
+    height: 100%;
+  }
+  body {
+    padding-bottom: 0;
+    position: relative;
+  }
+  body, .navbar {
+    background-color: #9c9c9c;
+  }
+  main.container {
+    text-align: center;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translateX(-50%) translateY(-50%);
+  }
+}

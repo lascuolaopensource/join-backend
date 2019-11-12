@@ -1,0 +1,95 @@
+nav.it = Italian
+nav.en = English
+nav.rules = Rules
+nav.signOut = Log out
+
+signUp.title = Sign up page
+signUp.top.title = Join the <strong class="font-freak">community</strong>
+signUp.form.firstName = Name
+signUp.form.lastName = Last Name
+signUp.form.email = Email Address
+signUp.form.password = Your password
+signUp.form.password2 = Repeat your password
+signUp.form.title = Enter your role
+signUp.form.agreement = Data processing
+signUp.form.agree = Authorize
+signUp.form.notAgree = Don't Authorize
+signUp.form.submit = ENTER
+signUp.error.emailExists = Email address is already registered
+signUp.error.passwordMatch = The passwords inserted do not match
+signUp.error.agreement = Data processing not authorized
+signUp.emailSent = A breve riceverai un email all''indirizzo <b>{0}</b> contenente il link da seguire per confermare l''iscrizione
+signUp.signIn = Have you already signed up?
+
+signIn.title = Sign in page
+signIn.top.title = La Scuola Open Source
+signIn.top.content = Sign up to join activities <br />\
+  Before signing in, read our <a href="{0}">guidelines</a>.
+signIn.main.title = Sign in
+signIn.form.email =Enter your email address
+signIn.form.password = Enter your password
+signIn.form.submit = SIGN IN
+signIn.error.wrongCredential = Wrong Email and/or password
+signIn.signUp = Join the community!
+signIn.lostData = Forgot username and/or password?
+
+forgotPassword.title = Reset password
+forgotPassword.heading = Recupera la <strong class="font-freak">password</strong>
+forgotPassword.email = Inserisci il tuo indirizzo email, ti invieremo la password smarrita
+forgotPassword.submit = RICHIEDI LA PASSWORD
+forgotPassword.signUp = Iscriviti alla community
+forgotPassword.signIn = Accedi
+forgotPassword.error.emailNotFound = Indirizzo email non trovato
+forgotPassword.sent = A breve riceverai un email all''indirizzo <b>{0}</b> contenente il link da seguire per il ripristino password
+
+resetPassword.title = Reset password
+resetPassword.heading = Cambia la <strong class="font-freak">password</strong>
+resetPassword.form.password1 = Inserisci la nuova password
+resetPassword.form.password2 = Conferma la nuova password
+resetPassword.form.submit = AGGIORNA LA PASSWORD
+resetPassword.passwords.notEqual = Le password inserite non corrispondono
+
+changePassword.title = Cambia password
+changePassword.heading = Cambia la <strong class="font-freak">password</strong>
+changePassword.form.current = Inserisci la password attuale
+changePassword.form.password1 = Inserisci la nuova password
+changePassword.form.password2 = Conferma la nuova password
+changePassword.form.submit = CAMBIA LA PASSWORD
+changePassword.passwords.notEqual = Le password inserite non corrispondono
+
+
+rules.title = Guidelines
+
+
+mail.signUp.subject = Conferma l'indirizzo e-mail
+mail.signUp.hello = Ciao {0},\nabbiamo ricevuto una richiesta di registrazione associata alla tua email.
+mail.signUp.link = Se la richiesta è stata effettuata da te, conferma cliccando su questo link: {0}
+mail.signUp.end = Una volta fatto, potrai accedere alla piattaforma.\n\nLa Scuola Open Source
+
+mail.signUp.hello.html = Ciao {0},<br />abbiamo ricevuto una richiesta di registrazione associata alla tua email.
+mail.signUp.link.html = <b>Se la richiesta è stata effettuata da te, conferma cliccando su questo link:</b><br/><a href="{0}">{0}</a>
+mail.signUp.end.html = Una volta fatto, potrai accedere alla piattaforma.<br /><br />La Scuola Open Source
+
+
+mail.changeEmail.subject = Conferma l'indirizzo e-mail
+mail.changeEmail.hello = Attenzione {0},\nabbiamo ricevuto una richiesta di modifica per l''indirizzo email associato al tuo account.
+mail.changeEmail.link = Se la richiesta è stata effettuata da te, conferma cliccando su questo link: {0}
+mail.changeEmail.end = Una volta fatto, registreremo la modifica richiesta nel database.\n\nLa Scuola Open Source
+
+mail.changeEmail.hello.html = Attenzione {0},<br />abbiamo ricevuto una richiesta di modifica per l''indirizzo email associato al tuo account.
+mail.changeEmail.link.html = <b>Se la richiesta è stata effettuata da te, conferma cliccando su questo link:</b><br/><a href="{0}">{0}</a>
+mail.changeEmail.end.html = Una volta fatto, registreremo la modifica richiesta nel database.<br /><br />La Scuola Open Source
+
+
+mail.resetPassword.subject = Conferma il cambio password
+mail.resetPassword.hello = Attenzione {0},\nabbiamo ricevuto una richiesta di modifica per la password associata al tuo account.
+mail.resetPassword.link = Se la richiesta è stata effettuata da te, conferma cliccando su questo link: {0}
+mail.resetPassword.end = Una volta fatto, potrai inserire la nuova password per il tuo account.\n\nLa Scuola Open Source
+
+mail.resetPassword.hello.html = Attenzione {0},<br />abbiamo ricevuto una richiesta di modifica per la password associata al tuo account.
+mail.resetPassword.link.html = <b>Se la richiesta è stata effettuata da te, conferma cliccando su questo link:</b><br/><a href="{0}">{0}</a>
+mail.resetPassword.end.html = Una volta fatto, potrai inserire la nuova password per il tuo account.<br /><br />La Scuola Open Source
+
+
+errors.generic.title = Error - La Scuola Open Source
+errors.generic.text = ERROR {0}

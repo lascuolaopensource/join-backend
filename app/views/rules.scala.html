@@ -1,0 +1,9 @@
+@import org.webjars.play.WebJarsUtil
+
+@(user: Option[models.User] = None, rules: String)(implicit request: RequestHeader, messages: Messages, webJarsUtil: WebJarsUtil)
+
+@main(Messages("rules.title"), user) {
+	<div id="rules-page">
+		@Html(rules)
+	</div>
+}
