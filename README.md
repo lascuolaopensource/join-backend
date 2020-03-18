@@ -1,16 +1,6 @@
-## OLD
-fare in modo che il modulo “sos-ui-shared” sia disponibile nel package.json per sos-ui e sos-admin-ui
-creare DB postgres
-configurare conf/env/dev.conf o conf/env/prod.conf in sos (il backend)
-compilare le due app ui (per es. con “ng build -prod -aot”)
-copiare la build della ui nella cartella public_html del web server
-compilare il backend (per es. con “sbt stage”)
-seeding dati (con “sbt seedDataProd“ o “sbt seedDataDev”)
-avviare il backend (per es. con “target/universal/stage/bin/sos -Dconfig.resource=env/prod.conf -Dhttp.port=80 -Dlogger.resource=logback.xml”)
+# Join - Backend
 
-## NEW
-
-### Dependendcies
+### Dependencies
 
 In order to compile the backend application you will need `Postgresql`, `sbt` and `JDK`.
 
