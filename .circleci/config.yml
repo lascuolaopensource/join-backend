@@ -1,0 +1,17 @@
+version: 2
+jobs:
+  build-and-push:
+    docker:
+      - image: circleci/node
+    steps:
+      - checkout
+      - setup_remote_docker:
+          docker_layer_caching: false
+      - run: docker build -t lascuolaopensource/join-backend-test:latest .
+      - run: echo $DOCKER_PASS | docker login -u $DOCKER_USER --password-stdin docker.io
+      - run: docker push lascuolaopensource/join-backend-test:latest
+workflows:
+  version: 2
+  deploy:
+    jobs:
+      - build-and-push
