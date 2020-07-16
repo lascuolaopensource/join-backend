@@ -10,7 +10,7 @@ lazy val root = (project in file(".")).enablePlugins(PlayScala)
 
 scalaVersion := "2.11.7"
 
-scalacOptions ++= Seq("-Xmax-classfile-name","128")
+scalacOptions ++= Seq("-Xmax-classfile-name","240")
 
 val webJars = Seq(
   "org.webjars.bower" % "bootstrap" % "4.1.0",
